@@ -52,17 +52,17 @@ var sum = function(array) {
 * Relationship btwn i/o:
 * */
 var arraySum = function(array) {
-// condition if len is zero
-  // return zero
-// copy the array
-// set a var to copy.pop()
-// check type for popped
-  // if array
-    // return recurse popped plus recurse copy
-  // else
-    // return popped plus recurse copy
-  
-  
+  if (array.length === 0) {
+    return 0;
+  }
+  var copy = array.slice();
+  var popped = copy.pop();
+
+  if (Array.isArray(popped)) {
+    return arraySum(popped) + arraySum(copy);
+  } else {
+    return popped + arraySum(copy);
+  }
 };
 
 // 4. Check if a number is even.
