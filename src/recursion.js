@@ -42,8 +42,27 @@ var sum = function(array) {
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
+/*
+* I: an array of integers
+* O: an integer
+* C: none
+* E: array of zero len returns 0
+* What this fn does: it checks the type of the last input member and either returns it and recurses the remainder
+*  or it simply recurses the last member if it is an array
+* Relationship btwn i/o:
+* */
 var arraySum = function(array) {
-
+// condition if len is zero
+  // return zero
+// copy the array
+// set a var to copy.pop()
+// check type for popped
+  // if array
+    // return recurse popped plus recurse copy
+  // else
+    // return popped plus recurse copy
+  
+  
 };
 
 // 4. Check if a number is even.
