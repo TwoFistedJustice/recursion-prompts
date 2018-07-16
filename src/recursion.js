@@ -66,7 +66,28 @@ var arraySum = function(array) {
 };
 
 // 4. Check if a number is even.
+/*
+I: a integer
+O: a bool
+C: none
+E: n is not an integer
+What this fn does: recursively subtracts two from the absolute value of
+                                  a number until 1, 0, or -1 is reached.
+Relationship between inputs and outputs: if the input subtracts down by two
+                               to 1 or -1 return false. If zero return true
+*/
 var isEven = function(n) {
+  if (n < 0){
+    n = Math.abs(n);
+  }
+  
+  if ( n === 0) {
+    return true;
+  } else if (n === 1 || n === -1) {
+    return false;
+  } else {
+    return isEven(n-2);
+  }
 };
 
 // 5. Sum all integers below a given integer.
