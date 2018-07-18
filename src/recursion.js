@@ -98,19 +98,22 @@ var isEven = function(n) {
   O: an integer
   C: sums from 0 to n, regardless of sign
   E: none
+  What this function does: it sums up all integers between the input integer and zero
+  Relationship between inputs and outputs: the output is the sum of all integers between itself
+   and zero, NON inclusive.
 * */
 var sumBelow = function(n) {
-  //base case n is zero
-  // set a bool to false
-  // if n is less than zero, set the bool to true
-  // if n is zero
-    // return zero
-  // else
-  //   return ternary bool
-     // negative case
-     // true -- n minus recurse n + 1
-     // positive case
-     // false -- n plus recurse n - 1
+  var isNegative = false;
+  if (n < 0) {
+    isNegative = true;
+  }
+  if (n === 1 || n === -1 || n === 0) {
+    return 0;
+  } else {
+    return isNegative
+      ? (n + 1) + sumBelow(n + 1)
+      : (n - 1) + sumBelow(n - 1);
+  }
   
 };
 
