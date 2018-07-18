@@ -93,7 +93,18 @@ var isEven = function(n) {
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
+/*
+  I: an integer
+  O: an integer
+  C: sums from 0 to n, regardless of sign
+  E: none
+* */
 var sumBelow = function(n) {
+  // if n is zero
+    // return zero
+  // else
+    // return n plus recurse(n-1)
+  
 };
 
 // 6. Get the integers within a range (x, y).
