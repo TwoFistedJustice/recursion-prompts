@@ -100,10 +100,17 @@ var isEven = function(n) {
   E: none
 * */
 var sumBelow = function(n) {
+  //base case n is zero
+  // set a bool to false
+  // if n is less than zero, set the bool to true
   // if n is zero
     // return zero
   // else
-    // return n plus recurse(n-1)
+  //   return ternary bool
+     // negative case
+     // true -- n minus recurse n + 1
+     // positive case
+     // false -- n plus recurse n - 1
   
 };
 
