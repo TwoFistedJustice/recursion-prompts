@@ -119,7 +119,26 @@ var sumBelow = function(n) {
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
+/*
+ I: two integers
+ O: an array of the integers that exist between the two inputs - non-inclusive
+ C: The integers must be different
+ E: The inputs may be the same
+ What this function does: it recursively finds the range of integers between the two outputs.
+ Relationship between inputs and outputs: The inputs are the bookends of the output,
+      the books are the numbers between the bookends.
+* */
 var range = function(x, y) {
+  var xIsBigger = x > y ? true : false;
+  
+  if (x === y || !xIsBigger && x === y - 1  || xIsBigger && x - 1 === y) {
+    return [];
+  }
+    if (xIsBigger) {
+    return [x - 1].concat(range(x - 1, y));
+  } else {
+    return [x + 1].concat(range(x + 1, y));
+  }
 };
 
 // 7. Compute the exponent of a number.
