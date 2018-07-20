@@ -157,8 +157,11 @@ Relationship between inputs and outputs: the output is the base times itself exp
 
 * */
 var exponent = function(base, exp) {
-  if (exp === 0) {
-    return 1;
+  
+  if (exp === -1) {
+    return 1 / base;
+  } else if (exp === 1) {
+    return base;
   }
   
   var expIsNegative = exp < 0 ? true : false;
