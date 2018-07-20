@@ -162,6 +162,10 @@ var exponent = function(base, exp) {
     return 1 / base;
   } else if (exp === 1) {
     return base;
+  } else if (exp === 2) {
+    return base * base;
+  } else if (exp === -2 ) {
+    return 1 / (base * base);
   }
   
   var expIsNegative = exp < 0 ? true : false;
