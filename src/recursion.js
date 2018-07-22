@@ -179,7 +179,25 @@ var exponent = function(base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
+
+/*
+I: an integer
+O: a boolena
+C: none
+E: none
+What this function does: It determines whether an integer is a the
+   result of the number 2 to the power of some exponent
+Relationship between inputs and outputs: No direct relationship. If the number
+   is a power of two, it return true and otherwise it returns false.
+*/
 var powerOfTwo = function(n) {
+  if (n < 1) {
+    return false;
+  } else if (n === 1) {
+    return true;
+  } else {
+    return powerOfTwo(n / 2);
+  }
 };
 
 // 9. Write a function that reverses a string.
