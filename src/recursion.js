@@ -211,21 +211,12 @@ What this function does: It takes a string and returns a reversed copy
 Relationship between inputs and output: one is the reverse of the other
 */
 var reverse = function(string) {
-  var reversedString = '';
-  var n = string.length -1;
-  
-  var inner = function(n) {
-    if (n ===0) {
-      reversedString += string[n];
-      return;
-    } else {
-      reversedString += string[n];
-      return inner(n -1);
-    }
-  };
-  
-  inner(n);
-  return reversedString;
+  if (string.length <= 1) {
+    return string;
+  } else {
+    var output = string[string.length - 1];
+    return output.concat(reverse(string.slice(0, string.length - 1)));
+  }
 };
 
 // 10. Write a function that determines if a string is a palindrome.
