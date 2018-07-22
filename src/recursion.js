@@ -211,11 +211,12 @@ What this function does: It takes a string and returns a reversed copy
 Relationship between inputs and output: one is the reverse of the other
 */
 var reverse = function(string) {
-  if (string.length <= 1) {
+  var length = string.length;
+  if (length <= 1) {
     return string;
   } else {
-    var lastChar = string[string.length - 1];
-    var truncatedString = string.slice(0, string.length - 1);
+    var lastChar = string[length - 1];
+    var truncatedString = string.slice(0, length - 1);
     return lastChar.concat(reverse(truncatedString));
   }
 };
