@@ -214,8 +214,9 @@ var reverse = function(string) {
   if (string.length <= 1) {
     return string;
   } else {
-    var output = string[string.length - 1];
-    return output.concat(reverse(string.slice(0, string.length - 1)));
+    var lastChar = string[string.length - 1];
+    var truncatedString = string.slice(0, string.length - 1);
+    return lastChar.concat(reverse(truncatedString));
   }
 };
 
