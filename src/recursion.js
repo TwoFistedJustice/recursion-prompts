@@ -236,19 +236,19 @@ var palindrome = function(string) {
     return true;
   }
   // recrusively check for a space - if char is a space, skip to the next one
-  const lowerIndex = function(n) {
+  const getIndex = function(n, isFirst){
+    const y = isFirst
+      ? n + 1
+      : n - 1;
+    
     return string[n] !== ' '
       ? n
-      : lowerIndex(n + 1);
-  };
-  const upperIndex = function(n) {
-    return string[n] !== ' '
-      ? n
-      : lowerIndex(n - 1);
+      : getIndex(y, isFirst);
   }
   
-  const firstIndex = lowerIndex(0);
-  const lastIndex = upperIndex(length - 1);
+  const firstIndex = getIndex(0, true);
+  const lastIndex = getIndex(length - 1, false);
+  
   
   const firstChar = string[firstIndex].toLowerCase();
   const lastChar = string[lastIndex].toLowerCase();
