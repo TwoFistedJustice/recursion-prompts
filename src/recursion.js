@@ -231,20 +231,36 @@ What this function does: it checks to see if a string is the same forward as bac
 Relationship between inputs and outputs: it returns depending on if the string is a palindrome.
 * */
 var palindrome = function(string) {
-  var length = string.length;
-  var first = string[0];
-  var last = string[length - 1];
+  const length = string.length;
+  if (length === 0) {
+    return true;
+  }
+  // recrusively check for a space - if char is a space, skip to the next one
+  const lowerIndex = function(n) {
+    return string[n] !== ' '
+      ? n
+      : lowerIndex(n + 1);
+  };
+  const upperIndex = function(n) {
+    return string[n] !== ' '
+      ? n
+      : lowerIndex(n - 1);
+  }
   
-  // if len is less equal 2
-    // ret isEqual A  B
-  // otherwise
-    // ret isEqual AB
-       // T recurse (string less A B)
-       // F F
-
-
+  const firstIndex = lowerIndex(0);
+  const lastIndex = upperIndex(length - 1);
+  
+  const firstChar = string[firstIndex].toLowerCase();
+  const lastChar = string[lastIndex].toLowerCase();
+  
+  if (length <= 2) {
+    return firstChar === lastChar;
+  } else {
+    return firstChar === lastChar
+      ? palindrome (string.slice (firstIndex + 1, lastIndex))
+      : false;
+  }
 };
-
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
 // modulo(5,2) // 1
