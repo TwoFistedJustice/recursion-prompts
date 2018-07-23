@@ -235,7 +235,7 @@ var palindrome = function(string) {
   if (length === 0) {
     return true;
   }
-  // recrusively check for a space - if char is a space, skip to the next one
+  // recursively check for a space - if char is a space, skip to the next one
   const getIndex = function(n, isFirst){
     const y = isFirst
       ? n + 1
@@ -248,8 +248,6 @@ var palindrome = function(string) {
   
   const firstIndex = getIndex(0, true);
   const lastIndex = getIndex(length - 1, false);
-  
-  
   const firstChar = string[firstIndex].toLowerCase();
   const lastChar = string[lastIndex].toLowerCase();
   
