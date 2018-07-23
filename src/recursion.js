@@ -222,7 +222,27 @@ var reverse = function(string) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
+/*
+I: a string
+O: a boolean
+C: none
+E: none
+What this function does: it checks to see if a string is the same forward as backwards
+Relationship between inputs and outputs: it returns depending on if the string is a palindrome.
+* */
 var palindrome = function(string) {
+  var length = string.length;
+  var first = string[0];
+  var last = string[length - 1];
+  
+  // if len is less equal 2
+    // ret isEqual A  B
+  // otherwise
+    // ret isEqual AB
+       // T recurse (string less A B)
+       // F F
+
+
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
