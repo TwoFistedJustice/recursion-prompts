@@ -264,8 +264,44 @@ var palindrome = function(string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
+
+/*
+ I: two integers
+ O: one iteger
+ C:If the abs value of x is less than y, return x
+ E: none
+ What this fn does: It recursively calculates the remainder after dividing one integer into another.
+ Relationship betwixt inputs and outputs: The output is the whole number left over after dividing
+   y into x.
+* */
 var modulo = function(x, y) {
+  
+  if (y === 0) {
+    return NaN;
+  } else if (x === y){
+    return 0;
+  }
+  
+  const xIsNegative = x < 0;
+  const yIsNegative = y < 0;
+  
+  const xAbsVal = xIsNegative
+    ? -x
+    : x;
+  
+  const yAbsVal = yIsNegative
+    ? -y
+    : y;
+  
+  if (xAbsVal < yAbsVal) {
+    return x;
+  } else if (xIsNegative && !yIsNegative) {
+    return modulo(x + y, y);
+  } else {
+    return modulo(x - y, y);
+  }
 };
+
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
