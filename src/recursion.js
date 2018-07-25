@@ -305,8 +305,31 @@ var modulo = function(x, y) {
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
+/*
+ I: two numbers
+ O: one number
+ C: none
+ E: none
+ What this fn does: it recursively adds x to itself y times
+ Relationship btwn inputs and outputs: The output is equal ot either number added
+   to itself a number of times equal to the other number.
+* */
 var multiply = function(x, y) {
+  const passX = y < 0
+    ? -x
+    : x;
+  
+  const passY = y < 0
+    ? -y - 1
+    : y - 1;
+  
+  if (y === 0) {
+    return 0;
+  } else {
+    return passX + multiply (passX, passY);
+  }
 };
+
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
