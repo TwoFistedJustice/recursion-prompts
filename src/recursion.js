@@ -333,8 +333,30 @@ var multiply = function(x, y) {
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
-var divide = function(x, y) {
+/*
+I: two integers
+O: one integer
+C: number must be an integer
+E: no divide by zero
+What this function does: It recursively divides the second arg into the first to arrive at
+  an approximate quotient, discarding any decimal ending.
+Relationship between inputs and outputs:
+  The output is the whole number quotient of the second number divided into the first
+*/
+var divide = function (x, y) {
+  if (y === 0){
+    return NaN;
+  } else if ( x === 0 || x < y){
+    return 0;
+  } else if (x === y) {
+    return 1;
+  } else if (x < 0 && y < 0) {
+    return divide(-x, -y);
+  } else {
+    return 1 + divide(x - y, y);
+  }
 };
+
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
 // integers is the greatest integer that divides both x and y with no remainder.
