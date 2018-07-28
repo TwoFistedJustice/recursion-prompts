@@ -363,6 +363,15 @@ var divide = function (x, y) {
 // gcd(4,36); // 4
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
+/*
+ I: two integers
+ O: one integer
+ C: no zeros
+ E: none
+ What this fn does: it recursively finds the greatest divisor of both numbers that doesn't have a remainder.
+ Relationship betwn inputs and outputs: the output is a number that divides evenly into each input without any remainder.
+* */
+
 var gcd = function(x, y) {
 };
 
