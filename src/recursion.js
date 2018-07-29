@@ -390,7 +390,30 @@ var gcd = function(x, y) {
 // both are identical.
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
+/*
+I: two strings
+O: a bool
+C: none
+E: none
+What this fn does: It recursively checks either end of each string to each other's and returns a bool
+  the value of which depends upon the equality of the characters
+Relationship btwn inputs & outputs: if the strings are equal the output is true, if they are not equal, then false
+
+*/
+
 var compareStr = function(str1, str2) {
+  var len = str1.length === str2.length
+    ? str1.length
+    : null;
+  
+  if (len === 0) {
+    return true;
+  } else {
+    return (len !== null && str1[0] === str2[0] && str1[len - 1] && str2[len - 1])
+      ? compareStr(str1.slice(1, len - 2), str2.slice(1, len - 2))
+      : false;
+    
+  }
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
