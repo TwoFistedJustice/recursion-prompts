@@ -401,7 +401,7 @@ Relationship btwn inputs & outputs: if the strings are equal the output is true,
 
 */
 
-var compareStr = function(str1, str2) {
+var compareStrOLD = function(str1, str2) {
   var len = str1.length === str2.length
     ? str1.length
     : null;
@@ -415,6 +415,32 @@ var compareStr = function(str1, str2) {
     
   }
 };
+
+
+// var compareStr = function(str1, str2) {
+//   if (str1 === '' & str2 === '') {
+//     return true;
+//   } else {
+//     if (str1[0] === str2[0]) {
+//       return compareStr(str1.slice(1, str1.length -1), str2.slice(1, str2.length -1) )
+//     } else {
+//       return false;
+//     }
+//   }
+// };
+
+var compareStr = function(str1, str2) {
+  if (str1 === '' & str2 === '') {
+    return true;
+  } else {
+    if (str1[0] === str2[0]) {
+      return compareStr(str1.slice(1, str1.length), str2.slice(1, str2.length) )
+    } else {
+      return false;
+    }
+  }
+};
+
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
