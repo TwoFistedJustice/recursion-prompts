@@ -461,8 +461,24 @@ var createArray = function(str) {
   }
 };
 
-// 17. Reverse the order of an array
+// 17. Reverse the order of an array\
+/*
+I: an array of unknown types
+O: the same array in reverse order
+C: none
+E: none
+What this function does: It recursively reverses the order of an array
+Relationship btwn inputs and outputs: Essentially the same thing, just backwards
+
+*/
+
 var reverseArr = function(array) {
+  if ( array.length === 0) {
+    return [];
+  } else {
+    const lastIndex = array.length - 1;
+    return [array[lastIndex]].concat(reverseArr(array.slice(0, lastIndex)));
+  }
 };
 
 // 18. Create a new array with a given value and length.
