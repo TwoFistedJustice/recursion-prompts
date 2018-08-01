@@ -484,7 +484,22 @@ var reverseArr = function(array) {
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
+/*
+ I: a value, a number
+ O: an array
+ C: value: of any type, length: must be a positive integer
+ E: length can be zero,
+ What this fn does: It creates an array filled with length members equal to value
+ Relationship btwn inputs and outputs: the output is array consisting of of identical elements
+   which are copies of the value. The length is the total number of elements
+*/
+
 var buildList = function(value, length) {
+  if (length === 0) {
+    return [];
+  } else {
+    return [value].concat(buildList(value, length - 1));
+  }
 };
 
 // 19. Implement FizzBuzz. Given integer n, return an array of the string representations of 1 to n.
