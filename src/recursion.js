@@ -507,8 +507,38 @@ var buildList = function(value, length) {
 // For multiples of five, output 'Buzz' instead of the number.
 // For numbers which are multiples of both three and five, output “FizzBuzz” instead of the number.
 // fizzBuzz(5) // ['1','2','Fizz','4','Buzz']
+/*
+I:a number
+O: an array of strings
+C: input must be a positive integer greater than zero
+E: none
+What this fn does: it creates an array of consecutive stringified numbers 1 to n, replacing
+sole factors of 3 with the string "Fizz", sole factors of 5 with "Buzz", and
+  factors of both 3 & 5 with "FizzBuzz:
+  Relationship btwn inputs and outputs:
+  the input determines the length the output array and the final value
+*/
+
 var fizzBuzz = function(n) {
+  
+  if (n <= 0) {
+    return [];
+  } else {
+    let fizuz = null;
+    if (n % 3 === 0 && n % 5 === 0 ) {
+      fizuz = "FizzBuzz"
+    } else if (n % 3 === 0 && n % 5 !== 0) {
+      fizuz = "Fizz";
+    } else if (n % 5 === 0 && n % 3 !== 0) {
+      fizuz = "Buzz"
+    } else {
+      fizuz = n.toString();
+    }
+    
+    return fizzBuzz(n - 1).concat(fizuz);
+  }
 };
+
 
 // 20. Count the occurence of a value in a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
