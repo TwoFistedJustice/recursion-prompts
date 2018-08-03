@@ -543,7 +543,26 @@ var fizzBuzz = function(n) {
 // 20. Count the occurence of a value in a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
+/*
+I: an array
+O: a number
+C: none
+E: list may be empty
+What this fn does: It recursively counts the number of times a given value is stored in an array
+Relationship btwn inputs and outputs: The output is the number of times the value occurs
+*/
+
 var countOccurrence = function(array, value) {
+  
+  if (array.length == 0) {
+    return 0;
+  } else {
+    if (array[0] === value) {
+      return 1 + countOccurrence(array.slice(1, array.length), value)
+    } else {
+      return countOccurrence(array.slice(1, array.length), value);
+    }
+  }
 };
 
 // 21. Write a recursive version of map.
