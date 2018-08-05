@@ -567,8 +567,25 @@ var countOccurrence = function(array, value) {
 
 // 21. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
+/*
+I:an array and a function that operates on the members of the array
+O: a new array
+C:
+E:
+What this fn does: It takes an array and a function. The function operates on every member consecutively
+  and returns a new value, which is added to a new array, which is returned at the end
+Relationship btwn inputs and outputs: The output is the result of the callback operating on the input array members
+*/
 var rMap = function(array, callback) {
+  if (array.length === 0) {
+    return [];
+  }
+  else {
+    let len = array.length - 1;
+    return rMap(array.slice(0, len), callback).concat(callback(array[len]));
+  }
 };
+
 
 // 22. Write a function that counts the number of times a key occurs in an object.
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
