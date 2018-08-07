@@ -591,7 +591,27 @@ var rMap = function(array, callback) {
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countKeysInObj(obj, 'r') // 1
 // countKeysInObj(obj, 'e') // 2
+/*
+I: an object and a string
+O: a number
+C: none
+E: none
+What this fn does: It recursively counts the number of times an given string occurs as a key in an object
+Relationship btwn inputs and outputs: The output is the number of times the key occurs.
+*/
 var countKeysInObj = function(obj, key) {
+  var count = 0;
+  
+  for (var item in obj) {
+    if (item === key) {
+      count++;
+    }
+    if (typeof(obj[item]) === 'object') {
+      count += countKeysInObj(obj[item], key);
+    }
+  }
+  
+  return count;
 };
 
 // 23. Write a function that counts the number of times a value occurs in an object.
