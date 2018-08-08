@@ -618,7 +618,28 @@ var countKeysInObj = function(obj, key) {
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
+
+/*
+I: and object and a value
+O: a number
+C: none
+E: none
+What this fn does: It recursively counts the number of times an object contains a given value, including in nested objects
+Relationship btwn inputs and outputs: The output is the number of times the given value occurs
+*/
+
 var countValuesInObj = function(obj, value) {
+  var count = 0;
+  
+  for (var val in obj) {
+    if (obj[val] === value) {
+      count++;
+    } else if (typeof(obj[val]) === 'object') {
+      count += countValuesInObj(obj[val], value);
+    }
+  }
+  
+  return count;
 };
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
