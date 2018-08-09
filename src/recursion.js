@@ -644,7 +644,31 @@ var countValuesInObj = function(obj, value) {
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
+
+
+/*
+I: an object, a string, and another string
+O: an object
+C: none
+E: none
+What this fn does: It recursively changes in an object every given key with a new value
+Relationship btwn inputs and outputs: The output is either a copy of the input obj or the
+  same object with any key matching 'oldKey' with the value of 'newKey'
+*/
 var replaceKeysInObj = function(obj, oldKey, newKey) {
+  
+  for (var key in obj) {
+    let value = obj[key];
+    if (typeof(value) === 'object') {
+      value = replaceKeysInObj(value, oldKey, newKey);
+    }
+    
+    if (key === oldKey) {
+      obj[newKey] = value;
+      delete obj[oldKey];
+    }
+  }
+  return obj;
 };
 
 // 25. Get the first n Fibonacci numbers. In the Fibonacci sequence, each subsequent
