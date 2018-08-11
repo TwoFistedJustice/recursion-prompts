@@ -676,15 +676,55 @@ var replaceKeysInObj = function(obj, oldKey, newKey) {
 // Example: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34.....
 // fibonacci(5); // [0,1,1,2,3,5]
 // Note: The 0 is not counted.
+/*
+I: a number
+O: an array
+C: number must be greater than zero
+E: none
+What this fn does: it recursively builds an array filled with n quantity of fibonacci numbers beginning with 0
+Relationship btwn inputs and outputs: The output is an array of length n (input)
+*/
 var fibonacci = function(n) {
+  if (n <= 0) {
+    return null;
+  }
+  if (n === 1) {
+    return [0 , 1];
+  } else {
+      var fibos = fibonacci(n - 1);
+      var len = fibos.length;
+      var sum = fibos[len -1] + fibos[len -2];
+      fibos.push(sum)
+      return fibos;
+  }
 };
+
 
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
 // [0,1,1,2,3,5,8,13,21]
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
+/*
+I: a number
+O: a number
+C: input must be an integer greater than zero
+E: none
+What this fn does: It recursively calculates the last fibonacci number in a sequence of n fibonacci numbers
+Relationship btwn inputs and outputs: The input indicates the end position in the fibonacci sequence,
+  the output is the fibonacci number at that location.
+*/
+
 var nthFibo = function(n) {
+  if (n < 0) {
+    return null;
+  } else if (n === 0) {
+    return 0;
+  } else if (n ===1){
+    return 1;
+  } else {
+    return nthFibo(n - 1) + nthFibo(n -2);
+  }
 };
 
 // 27. Given an array of words, return a new array containing each word capitalized.
