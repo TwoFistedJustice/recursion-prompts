@@ -730,7 +730,24 @@ var nthFibo = function(n) {
 // 27. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
+/*
+I: an array of strings
+O: an array of strings
+C: none
+E: empty array
+What this fn does: It recursively changes all the characters to uppercase in each word contained in an array
+Relationship btwn inputs and outputs: The output array is a copy of the input array, but with each word in all caps.
+*/
+
 var capitalizeWords = function(array) {
+  
+  if (array.length === 0) {
+    return [];
+  } else {
+    var lastElement = array.length - 1;
+    var allCaps = array[lastElement].toUpperCase();
+    return capitalizeWords(array.slice(0, lastElement)).concat(allCaps)
+  }
 };
 
 // 28. Given an array of strings, capitalize the first letter of each index.
