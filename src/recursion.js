@@ -783,12 +783,55 @@ var capitalizeFirst = function(array) {
 //   e: {e: {e: 2}, ee: 'car'}
 // };
 // nestedEvenSum(obj1); // 10
+
+/*
+I: an object (hash table)
+O: a number (integer)
+C: none
+E: there may be no numbers present
+What this fn does: It recursively searches a nested object for even numbers
+   and returns the sum of the found even numbers.
+Relationship btwn inputs and outputs: The output is the sum of the even numbers found in the nested object.
+*/
+
 var nestedEvenSum = function(obj) {
+  var sum = 0;
+  
+  for (var prop in obj) {
+    if (typeof obj[prop] === 'object') {
+      sum += nestedEvenSum(obj[prop]);
+    } else if (typeof obj[prop] === 'number' && obj[prop] %2 === 0) {
+      sum += obj[prop];
+    } else {
+      sum += 0;
+    }
+  }
+  return sum;
 };
 
 // 30. Flatten an array containing nested arrays.
 // flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
+/*
+I: an arry of arrays
+O: an array of numbers
+C: none
+E: none
+What this fn does: It recursively extracts the elements of sub arrays and consolidates them in a single one level array
+Relationship btwn inputs and outputs: The output is an array of all the elements contained in the nested input
+*/
+
 var flatten = function(array) {
+  var output = [];
+  for (let i = 0; i < array.length; i ++) {
+    let el = array[i];
+    if (Array.isArray(el)) {
+      output = output.concat(flatten(el));
+      
+    } else {
+      output.push(el);
+    }
+  }
+  return output;
 };
 
 // 31. Given a string, return an object containing tallies of each letter.
