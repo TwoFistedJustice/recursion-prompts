@@ -892,11 +892,31 @@ var compress = function(list) {
 };
 
 
-// 33. Augument every element in a list with a new value where each element is an array
+// 33. Augment every element in a list with a new value where each element is an array
 // itself.
 // augmentElements([[],[3],[7]], 5); // [[5],[3,5],[7,5]]
+/*
+I: an array, and a literal value
+O: an array of arrays
+C: none
+E: none
+What this fn does: It recursively adds a value as an element to each array in an array of arrays
+Relationship btwn inputs and outputs: the output array is the input array with the 'aug' parameter added
+  to each sub array.
+*/
+
 var augmentElements = function(array, aug) {
+  if (array.length === 0) {
+    return array;
+  } else {
+    let arr = [];
+    let el = array[0].slice(0, 1);
+    el.push(aug);
+    arr.push(el);
+    return arr.concat(augmentElements(array.slice(1, array.length), aug));
+  }
 };
+
 
 // 34. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
