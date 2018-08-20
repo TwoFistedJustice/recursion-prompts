@@ -866,8 +866,31 @@ var letterTally = function(str, obj) {
 // elements should not be changed.
 // compress([1,2,2,3,4,4,5,5,5]) // [1,2,3,4,5]
 // compress([1,2,2,3,4,4,2,5,5,5,4,4]) // [1,2,3,4,2,5,4]
+
+/*
+I: an array
+O: a modified copy of the original array
+C: array should not be empty
+E: empty array
+What this fn does: It recursively removes all but one repeated value when the values occur in contiguous positions
+Relationship btwn inputs and outputs: The output array is a copy of the original with consecutive duplicates filtered out
+*/
+
 var compress = function(list) {
+  for (let i = 0; i < list.length; i++) {
+    let el = list[i];
+    let nextEl = list[i + 1];
+    if (i === list.length - 1) {
+      return list;
+    } else if (el === nextEl) {
+      let firstPart = list.slice(0, i);
+      let lastPart = list.slice(i + 1, list.length);
+      let newList = firstPart.concat(lastPart);
+      return compress(newList);
+    }
+  }
 };
+
 
 // 33. Augument every element in a list with a new value where each element is an array
 // itself.
