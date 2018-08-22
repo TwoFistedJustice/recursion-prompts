@@ -946,8 +946,38 @@ var minimizeZeroes = function(array) {
 // their original sign. The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
+
+/*
+I: an array of numbers
+O: an array of alternating positive and negative numbers
+C: none
+E: none
+What this fn does: It recursively changes the signs of the numbers in an array such that the first one is postive,
+  and they alternate positive, negative till the end.
+Relationship btwn inputs and outputs: The output array is a copy of the input array, but with alternating signs.
+*/
 var alternateSign = function(array) {
+  const length = array.length;
+  const setPositive = function(n) {
+    return Math.abs(n);
+  }
+  
+  const setNegative  = (n) => {
+    return setPositive(n) * -1;
+  }
+  
+  if (length === 1) {
+    return array.map(n => setNegative(n));
+  } else if (length === 0) {
+    return array;
+  } else {
+    const zeroIndex = setPositive(array[0]);
+    const oneIndex = setNegative(array[1]);
+    
+    return [zeroIndex, oneIndex].concat(alternateSign(array.slice(2, length)));
+  }
 };
+
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
