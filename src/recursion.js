@@ -982,9 +982,64 @@ var alternateSign = function(array) {
 // 36. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+/*
+I: a string containing letters and numbers
+O: a string containing only letters
+C: The numbers must be single digit integers less than 10
+E: none
+What this fn does: It recursively searches a string and replaces any number 0 - 9 with the text equivelent.
+Relationship btwn inputs and outputs: The output is the same as the input except that digits are replaced by words
+*/
+var numToText = function (str) {
+  if (str.length === 0) {
+    return '';
+  }
+  
+  let firstChar = str[0];
+  const regex = RegExp (/^\d+$/);
+  const isNumber = regex.test (firstChar);
+  const textifyDigit = (n) => {
+    switch (n) {
+      case '0':
+        return 'zero';
+        break;
+      case '1':
+        return 'one'
+        break;
+      case '2':
+        return 'two';
+        break;
+      case '3':
+        return 'three';
+        break;
+      case '4':
+        return 'four';
+        break;
+      case '5':
+        return 'five';
+        break;
+      case '6':
+        return 'six';
+        break;
+      case '7':
+        return 'seven';
+      case '8':
+        return 'eight';
+        break;
+      case '9':
+        return 'nine';
+        break;
+      default:
+        return 'number not found';
+    }
+  }
+  
+  if (isNumber) {
+    firstChar = textifyDigit (firstChar);
+  }
+  
+  return firstChar.concat (numToText (str.substring (1, str.length)));
 };
-
 
 // *** EXTRA CREDIT ***
 
