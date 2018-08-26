@@ -1073,8 +1073,42 @@ var tagCount = function(tag, node = window.document) {
 // var array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 // binarySearch(array, 5) // 5
 // https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
+
+/*
+I: an array of numbers
+O: a number
+C: The input array must be sorted. Should return null if target is not found;
+E: none
+What this fn does: It recursively searches a sorted array for a value, returning that value's index.
+  Successive calls contain a min and max which are based on previous calls.
+Relationship btwn inputs and outputs: The number output is the array index of the target value.
+*/
+
 var binarySearch = function(array, target, min, max) {
+  min = min || 0;
+  max = max || array.length - 1;
+  const mid = Math.ceil((min + max) / 2);
+  const midVal = array[mid];
+  
+  if (min === max && array[min] !== target || min > max) {
+    return null;
+  }
+  
+  if (array[min] === target) {
+    return min;
+  } else if (midVal === target) {
+    return mid;
+  } else if (array[max] === target) {
+    return max;
+  }
+  
+  if (midVal > target) {
+    return binarySearch(array, target, min + 1, mid - 1);
+  } else {
+    return binarySearch(array, target, mid + 1, max - 1);
+  }
 };
+
 
 // 39. Write a merge sort function.
 // mergeSort([34,7,23,32,5,62]) // [5,7,23,32,34,62]
