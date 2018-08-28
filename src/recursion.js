@@ -1110,7 +1110,7 @@ var binarySearch = function(array, target, min, max) {
 };
 
 
-// 39. Write a merge sort function.
+// 39A. Write a merge sort function.
 // mergeSort([34,7,23,32,5,62]) // [5,7,23,32,34,62]
 // https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms
 /*
@@ -1127,9 +1127,11 @@ the result array. When one array is empty, it concats the other onto result.
 
 This could be improved if I wrote it such that it never mutated any of the arrays except result.
 
+This is my original solution. It is inefficient in that it takes extra steps to mutate
+the arrays under inspection.
 */
 
-var mergeSort = function(array) {
+var mergeSortMutate = function(array) {
   if (array.length <= 1 ) {
     return array;
   } else {
@@ -1156,6 +1158,55 @@ var mergeSort = function(array) {
   }
 };
 
+
+// 39. Write a merge sort function.
+// mergeSort([34,7,23,32,5,62]) // [5,7,23,32,34,62]
+// https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms
+/*
+I: an unsorted or sorted array of numbers
+O: a sorted array of numbers
+C: numbers must be unique
+E: empty array
+What this fn does: It sorts the array by first recursively  splitting the array into ever smaller
+  arrays and then sorting by comparing their elements to each other and extracting the lesser ones
+  to a results array. Any remainders are concatted onto the results array, saving a few iterations.
+Relationship btwn inputs and outputs: the output contains exactly the same numbers, but in ascencing order
+
+This is a more efficient implementation in that it does not mutate any inputs, thus saving memory and
+cpu usage.
+
+*/
+
+var mergeSort = function(array) {
+  if (array.length <= 1 ) {
+    return array;
+  } else {
+    let result = [];
+    let lenA = Math.floor(array.length / 2);
+    
+    let rightHalf = mergeSort(array.slice(0, lenA));
+    let leftHalf = mergeSort(array.slice(lenA, array.length));
+    let iR = 0;
+    let iL = 0;
+    
+    while (iR < rightHalf.length && iL < leftHalf.length) {
+      if (rightHalf[iR] < leftHalf[iL]) {
+        result.push(rightHalf[iR]);
+        iR++;
+      } else {
+        result.push(leftHalf[iL]);
+        iL++;
+      }
+    }
+    
+    if (iR === rightHalf.length){
+      result = result.concat(leftHalf.slice(iL, leftHalf.length));
+    } else {
+      result = result.concat(rightHalf.slice(iR, rightHalf.length));
+    }
+    return result;
+  }
+};
 
 
 
