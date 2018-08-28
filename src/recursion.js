@@ -1120,7 +1120,13 @@ C: numbers must be unique
 E: empty array
 What this fn does: It sorts the array by first recursively  splitting the array into ever smaller
   arrays and then sorting by comparing their first elements to each other.
-Relationship btwn inputs and outputs: the output contains exactly the same numbers, but in ascencing order
+Relationship btwn inputs and outputs: the output contains exactly the same numbers, but in ascending order
+
+The while loop compares the first element in each array, removes the smaller, and pushes it on to
+the result array. When one array is empty, it concats the other onto result.
+
+This could be improved if I wrote it such that it never mutated any of the arrays except result.
+
 */
 
 var mergeSort = function(array) {
@@ -1130,30 +1136,26 @@ var mergeSort = function(array) {
     let result = [];
     let lenA = Math.floor(array.length / 2);
     
-    // these four lines can be concatted later
-    var halfA = array.slice(0, lenA);
-    var halfB = array.slice(lenA, array.length);
+    let halfA = mergeSort(array.slice(0, lenA));
+    let halfB = mergeSort(array.slice(lenA, array.length));
     
-    var recA = mergeSort(halfA);
-    var recB = mergeSort(halfB);
-    
-    while (recA.length > 0 && recB.length > 0) {
-      if (recA[0] < recB[0]) {
-        result.push(recA.shift());
+    while (halfA.length > 0 && halfB.length > 0) {
+      if (halfA[0] < halfB[0]) {
+        result.push(halfA.shift());
       } else {
-        result.push(recB.shift());
+        result.push(halfB.shift());
       }
-    } // end while
+    }
     
-    if (recA.length === 0) {
-      result = result.concat(recB);
+    if (halfA.length === 0) {
+      result = result.concat(halfB);
     } else {
-      result = result.concat(recA);
+      result = result.concat(halfA);
     }
     return result;
-  } // end else
-  
+  }
 };
+
 
 
 
