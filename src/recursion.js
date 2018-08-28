@@ -1113,8 +1113,49 @@ var binarySearch = function(array, target, min, max) {
 // 39. Write a merge sort function.
 // mergeSort([34,7,23,32,5,62]) // [5,7,23,32,34,62]
 // https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms
+/*
+I: an unsorted or sorted array of numbers
+O: a sorted array of numbers
+C: numbers must be unique
+E: empty array
+What this fn does: It sorts the array by first recursively  splitting the array into ever smaller
+  arrays and then sorting by comparing their first elements to each other.
+Relationship btwn inputs and outputs: the output contains exactly the same numbers, but in ascencing order
+*/
+
 var mergeSort = function(array) {
+  if (array.length <= 1 ) {
+    return array;
+  } else {
+    let result = [];
+    let lenA = Math.floor(array.length / 2);
+    
+    // these four lines can be concatted later
+    var halfA = array.slice(0, lenA);
+    var halfB = array.slice(lenA, array.length);
+    
+    var recA = mergeSort(halfA);
+    var recB = mergeSort(halfB);
+    
+    while (recA.length > 0 && recB.length > 0) {
+      if (recA[0] < recB[0]) {
+        result.push(recA.shift());
+      } else {
+        result.push(recB.shift());
+      }
+    } // end while
+    
+    if (recA.length === 0) {
+      result = result.concat(recB);
+    } else {
+      result = result.concat(recA);
+    }
+    return result;
+  } // end else
+  
 };
+
+
 
 // 40. Deeply clone objects and arrays.
 // var obj1 = {a:1,b:{bb:{bbb:2}},c:3};
