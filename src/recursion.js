@@ -1215,5 +1215,47 @@ var mergeSort = function(array) {
 // var obj2 = clone(obj1);
 // console.log(obj2); // {a:1,b:{bb:{bbb:2}},c:3}
 // obj1 === obj2 // false
+/*
+I: an object (including "arrays")
+O: an identical object or "array"
+C: none
+E: none
+What this fn does: It recursively copies the keys and properties of one object into a new object.
+Relationship btwn inputs and outputs: The output is an exact copy of the input.
+*/
+
 var clone = function(input) {
+  const arrayChipper = (input) => {
+    var arr = [];
+    for (let i = 0; i < input.length; i++) {
+      let item = input[i];
+      if (typeof item === 'object') {
+        arr.push(clone(item));
+      } else {
+        arr.push(item);
+      }
+    }
+    return arr;
+  };
+  
+  const objectChipper = (input) => {
+    var obj = {};
+    for (let key in input) {
+      if (typeof input[key] === 'object') {
+        obj[key] = clone(input[key]);
+      } else {
+        obj[key] = input[key];
+      }
+    }
+    return obj;
+  };
+  
+  
+  if (Array.isArray(input)) {
+    return arrayChipper(input);
+  } else if (!Array.isArray(input) && typeof(input) === 'object') {
+    return objectChipper(input);
+  } else {
+    return null;
+  }
 };
